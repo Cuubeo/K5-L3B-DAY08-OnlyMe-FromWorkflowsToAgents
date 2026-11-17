@@ -3,9 +3,9 @@
 ## Thông tin nhóm
 
 - Tên nhóm: OnlyMe
-- Lớp: L3A
+- Lớp: L3B
 - Repo nhóm: `K5-L3B-DAY08-OnlyMe-FromWorkflowsToAgents` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt: https://github.com/Cuubeo/K5-L3A-DAY08-OnlyMe-FromWorkflowsToAgents, nhánh `main`, commit <COMMIT_HASH>
+- URL repo, nhánh nộp, commit chốt: https://github.com/Cuubeo/K5-L3B-DAY08-OnlyMe-FromWorkflowsToAgents, nhánh `main`, commit 41d756f
 
 ## Thành viên
 
@@ -26,7 +26,7 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| Bùi Phước Anh | Toàn bộ (workflow, single, orchestrator, handoff, crash, benchmark, báo cáo) | <COMMIT_HASH> | `src/tests/test_student_shapes_safety.py` (57 test: crash 3 điểm × 3 shape, approval mượn của claim khác, quét trace secret/PII/ticket, claim không tồn tại) |
+| Bùi Phước Anh | Toàn bộ (workflow, single, orchestrator, handoff, crash, benchmark, báo cáo) | 41d756f | `src/tests/test_student_shapes_safety.py` (57 test: crash 3 điểm × 3 shape, approval mượn của claim khác, quét trace secret/PII/ticket, claim không tồn tại) |
 
 ## Cá nhân
 

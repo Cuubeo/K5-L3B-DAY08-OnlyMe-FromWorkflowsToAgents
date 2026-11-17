@@ -6,7 +6,7 @@ Tối đa 5 trang ngoài phụ lục. Số liệu lấy từ file trong `src/rep
 
 - Tên nhóm: OnlyMe
 - Thành viên: xem `TEAM.md` (nhóm 1 người, làm một mình toàn bộ các vai)
-- Commit chốt (trùng `report/team/decision_adr.md`): <COMMIT_HASH>
+- Commit chốt (trùng `report/team/decision_adr.md`): 41d756f
 
 ## 2. Mục tiêu và cách tiếp cận
 

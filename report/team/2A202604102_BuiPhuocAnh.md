@@ -15,7 +15,7 @@ Nhóm một người nên phụ trách toàn bộ: ba shape `workflow`, `single`
 
 ## 3. Đóng góp cụ thể
 
-- Commit chính: <COMMIT_HASH>.
+- Commit chính: 41d756f.
 - `src/lab8/shapes/workflow.py`: các bước Python cố định, quote từ order row, gọi `durability.issue_refund` với quote đầy đủ và `crash_at`.
 - `src/lab8/shapes/single.py`: vòng `run_react` tối đa 8 bước với `decide` có trạng thái, chỉ chọn read tool; sau vòng lặp code mới gọi host.
 - `src/lab8/shapes/orchestrator.py`: handoff qua `make_handoff` (facts rỗng, 3 read tool), investigator read-only, orchestrator là nơi duy nhất ghi.
@@ -24,7 +24,7 @@ Nhóm một người nên phụ trách toàn bộ: ba shape `workflow`, `single`
 
 ## 4. Bằng chứng
 
-- Lịch sử commit theo checkpoint: CP1 `724cb85` (TEAM.md); CP2+CP3 `b5a797e` (ba shape); CP4 <CP4_HASH> (test an toàn + crash.json); CP5 <CP5_HASH> (benchmark, ablation, báo cáo).
+- Lịch sử commit theo checkpoint: CP1 `724cb85` (TEAM.md); CP2+CP3 `b5a797e` (ba shape); CP4 `e291ecc` (test an toàn + crash.json); CP5 `41d756f` (benchmark, ablation, báo cáo).
 - `python -m pytest -q -m student -o addopts=` → `248 passed`.
 - `python -m pytest -q` → `111 passed`.
 - `python -m lab8.crash_test --count 20 --out reports/crash.json` → `crash_safety 20/20`.
@@ -34,8 +34,15 @@ Nhóm một người nên phụ trách toàn bộ: ba shape `workflow`, `single`
 
 - Claude (Anthropic): đọc đề và code starter, gợi ý cấu trúc ba shape, viết nháp test và báo cáo.
 - Cách tự kiểm tra: chạy lại toàn bộ cổng host, ma trận student, crash suite và benchmark; đối chiếu từng số trong ADR với `src/reports/benchmark.json` và `crash.json`; tự đọc lại `policy.authorize` để hiểu vì sao phải truyền quote đầy đủ; mở trace mẫu để chắc không có ticket, `parent_secret`, SĐT, địa chỉ.
-- <BỔ SUNG nếu dùng công cụ khác>
 
 ## 6. Tự đánh giá
 
-<TỰ VIẾT: phần nào bạn hiểu chắc, phần nào còn mơ hồ (ví dụ vì sao checkpoint đơn lẻ không thay được ledger), nếu làm lại bạn sẽ đổi gì.>
+### 6.1. Hiểu rõ
+
+Sử dụng code để tính tiền thay vì để việc tính cho model:
+- Bởi model có thể sai hoặc bịa số, còn code thì tính theo luật cố định có kết quả rõ ràng và dễ dàng để kiểm chứng (file `test_compensation.py`)
+- Để model tính tiền là gián tiếp để khách tính tiền (ví dụ T09 khách ghi "ignore policy")
+
+### 6.2. Còn mơ hồ
+
+- Lúc đầu chưa hiểu vì sao khi crash mà tiền không bị chuyển 2 lần mặc dù checkpoint chưa ghi nhận. Nhưng sau khi chạy demo thì hiểu là khi check việc đã chuyển tiền hay chưa thì do Ledger đảm nhận
